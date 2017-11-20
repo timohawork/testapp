@@ -9,10 +9,14 @@
       "host": "localhost",
       "user": "root",
       "password": "123456",
-      "database": "test"
+      "database": "testapp"
     },
     "files": {
       "uploads_dir": "uploads/"
     }
+  },
+  "front": {
+    "title": "Тестовое приложение",
+    "secret": "495hy9h4yn79c4hng8974h5d46"
   }
 }

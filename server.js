@@ -19,13 +19,13 @@ function Server(app) {
         app.config.web.host ? app.config.web.host : undefined,
         () => console.log('App listening on port '+app.config.web.port+'!')
     );
-    self.server.use('/static', self.express.static('/front'));
+    self.server.use('/static', self.express.static('front'));
 
     app.fs.readdirSync('./controllers').forEach(file => {
         var controller = require('./controllers/'+file)(app);
-        for (var i in controller.actions) {
-            var action = controller.actions[i];
-            self.server[action.method](controller.url+action.url, action.do);
+        for (var name in controller.actions) {
+            var action = controller.actions[name];
+            self.server[action.method](controller.url+(action.url !== undefined ? action.url : '/'+name), action.do);
         }
     });
 

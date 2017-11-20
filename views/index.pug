@@ -1,0 +1,11 @@
+extends layout.pug
+
+block content
+    .card
+        .card-body
+            form(method="POST" action="")
+                .fieldset
+                    .form-group
+                        label(for="file") Выберите файл
+                        input.form-control-file(type="file" id="file")
+                    a.btn.btn-success Загрузить
