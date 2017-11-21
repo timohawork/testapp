@@ -18,7 +18,7 @@ function IndexController(app) {
         method: 'post',
         do: (req, res) => {
             var post = req.body;
-            console.log('post:', post);
+            //console.log('post:', post);
             app.model.user.findOne({where: {login: post.login}})
                 .then(user => {
                     if (!user || user.password != post.password) {

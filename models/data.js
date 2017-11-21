@@ -9,8 +9,17 @@ module.exports = app => {
             type: Sequelize.STRING,
             allowNull: false
         },
+        text: {
+            type: Sequelize.TEXT,
+            validate: {
+                latin_strings() {
+                    if (/[a-zA-Z]/.test(this.text))
+                        throw new Error('String with english symbols:', this.text);
+                }
+            }
+        },
         createdAt: Sequelize.DATE,
-        user_id: {
+        userId: {
             type: Sequelize.INTEGER,
             references: {
                 model: app.model.user,

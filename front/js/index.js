@@ -1,4 +1,5 @@
 $(document).ready(() => {
+    // TODO: add login form
     var user = {
         login: 'admin',
         password: '123456',
@@ -22,6 +23,7 @@ $(document).ready(() => {
 
             console.log('Auth success!');
             user.token = res.token;
+            $('.token').val(user.token);
             $('body').show();
         }
     });

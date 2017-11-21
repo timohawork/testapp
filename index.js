@@ -36,5 +36,6 @@ function init() {
     app.fs.readdirSync('./models').forEach(file => {
         app.model[file.split('.')[0]] = require('./models/'+file)(app);
     });
+
     var server = require("./server")(app);
 }
