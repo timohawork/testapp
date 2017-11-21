@@ -16,5 +16,7 @@ module.exports = app => {
         }
     });
 
+    app.model.data.belongsTo(model);
+
     return model;
 };

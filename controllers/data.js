@@ -59,7 +59,10 @@ function DataController(app) {
             app.model.data.count().then(total => {
                 app.model.data.findAll({
                     limit: limit,
-                    offset: (page - 1) * limit
+                    offset: (page - 1) * limit,
+                    include: [
+                        {model: app.model.user}
+                    ]
                 }).then(data => {
                     res.render('list', {
                         data: data,
