@@ -1,0 +1,23 @@
+extends layout.pug
+
+block content
+    table.table.table-striped.table-hover.table-bordered
+        thead.thead-dark
+            tr
+                th #
+                th Название файла
+                th Текст
+                th Пользователь
+                th Время
+        tbody
+            each line in data
+                tr
+                    td= line.id
+                    td= line.filename
+                    td= line.text
+                    td= line.userId
+                    td= line.createdAt
+
+        tfoot
+            tr
+                td(colspan=5)='Всего '+total+' записей'

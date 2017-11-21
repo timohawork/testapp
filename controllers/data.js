@@ -41,11 +41,32 @@ function DataController(app) {
                                     })
                                 });
 
-                            res.json({success: true});
+                            res.redirect('/data/list');
                         });
                     }
                 });
             }
+        }
+    };
+
+    self.actions.list = {
+        method: 'get',
+        url: '/list(/page/:page)?',
+        do: (req, res) => {
+            var page = req.params.page || 1;
+            var limit = app.config.front.lines_per_page;
+
+            app.model.data.count().then(total => {
+                app.model.data.findAll({
+                    limit: limit,
+                    offset: (page - 1) * limit
+                }).then(data => {
+                    res.render('list', {
+                        data: data,
+                        total: total
+                    });
+                });
+            });
         }
     };
 
