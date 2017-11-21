@@ -21,3 +21,16 @@ block content
         tfoot
             tr
                 td(colspan=5)='Всего '+total+' записей'
+
+    div
+        ul.pagination
+            li.page-item(class=page == 1 ? 'disabled' : '')
+                a.page-link(href="/data/list/page/"+(page-1)) &laquo;
+
+            - for (var i = 1; i <= pages; i++) {
+                li.page-item(class= i == page ? 'active' : '')
+                    a.page-link(href="/data/list/page/"+i)= i
+            - }
+
+            li.page-item(class=page == pages ? 'disabled' : '')
+                a.page-link(href="/data/list/page/"+(page+1)) &raquo;

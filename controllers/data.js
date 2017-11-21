@@ -63,7 +63,9 @@ function DataController(app) {
                 }).then(data => {
                     res.render('list', {
                         data: data,
-                        total: total
+                        total: total,
+                        page: page*1,
+                        pages: Math.ceil(total / limit)
                     });
                 });
             });
